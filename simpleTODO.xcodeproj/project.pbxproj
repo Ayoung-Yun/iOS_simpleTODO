@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		948C8C3F23D18B670048354D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C8C3E23D18B670048354D /* AppDelegate.swift */; };
-		948C8C4323D18B670048354D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C8C4223D18B670048354D /* ViewController.swift */; };
 		948C8C4623D18B670048354D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 948C8C4423D18B670048354D /* Main.storyboard */; };
 		948C8C4823D18B690048354D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 948C8C4723D18B690048354D /* Assets.xcassets */; };
 		948C8C4B23D18B690048354D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 948C8C4923D18B690048354D /* LaunchScreen.storyboard */; };
+		948C8C5323D18E7E0048354D /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C8C5223D18E7E0048354D /* MemoListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		948C8C3B23D18B670048354D /* simpleTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = simpleTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		948C8C3E23D18B670048354D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		948C8C4223D18B670048354D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		948C8C4523D18B670048354D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		948C8C4723D18B690048354D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		948C8C4A23D18B690048354D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		948C8C4C23D18B690048354D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		948C8C5223D18E7E0048354D /* MemoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +55,45 @@
 			isa = PBXGroup;
 			children = (
 				948C8C3E23D18B670048354D /* AppDelegate.swift */,
-				948C8C4223D18B670048354D /* ViewController.swift */,
-				948C8C4423D18B670048354D /* Main.storyboard */,
-				948C8C4723D18B690048354D /* Assets.xcassets */,
-				948C8C4923D18B690048354D /* LaunchScreen.storyboard */,
+				948C8C5423D18F3B0048354D /* ViewController */,
+				948C8C5723D18F610048354D /* Model */,
+				948C8C5623D18F580048354D /* Resources */,
 				948C8C4C23D18B690048354D /* Info.plist */,
 			);
 			path = simpleTODO;
+			sourceTree = "<group>";
+		};
+		948C8C5423D18F3B0048354D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				948C8C5823D18FA00048354D /* MemoList */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		948C8C5623D18F580048354D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				948C8C4723D18B690048354D /* Assets.xcassets */,
+				948C8C4923D18B690048354D /* LaunchScreen.storyboard */,
+				948C8C4423D18B670048354D /* Main.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		948C8C5723D18F610048354D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		948C8C5823D18FA00048354D /* MemoList */ = {
+			isa = PBXGroup;
+			children = (
+				948C8C5223D18E7E0048354D /* MemoListViewController.swift */,
+			);
+			path = MemoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				948C8C4323D18B670048354D /* ViewController.swift in Sources */,
+				948C8C5323D18E7E0048354D /* MemoListViewController.swift in Sources */,
 				948C8C3F23D18B670048354D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
