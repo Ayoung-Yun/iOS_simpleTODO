@@ -17,8 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zwk-mb-QNw">
-                                <rect key="frame" x="0.0" y="148.5" width="414" height="713.5"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MemoCell" id="cKI-C8-buK" customClass="MemoCell" customModule="simpleTODO" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cKI-C8-buK" id="qyB-8S-fb3">
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gai-NO-FiO">
+                                                    <rect key="frame" x="30" y="11.5" width="323" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gai-NO-FiO" secondAttribute="trailing" constant="30" id="Dka-3t-bIl"/>
+                                                <constraint firstItem="gai-NO-FiO" firstAttribute="leading" secondItem="qyB-8S-fb3" secondAttribute="leading" constant="30" id="xU6-ZP-CAk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="gai-NO-FiO" firstAttribute="centerY" secondItem="cKI-C8-buK" secondAttribute="centerY" id="8bK-GK-Oi2"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -34,8 +59,14 @@
                     <navigationItem key="navigationItem" title="나의 메모" id="vOa-oG-i67">
                         <barButtonItem key="rightBarButtonItem" image="Icon-Plus" id="cWg-Wt-39D">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addMemo:" destination="BYZ-38-t0r" id="Hu0-th-jot"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="memoTableView" destination="Zwk-mb-QNw" id="gMu-1W-1Rp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,7 +78,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dRx-aA-VeS" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="7TZ-g1-gOH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -62,8 +93,75 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
+        <!--새 메모-->
+        <scene sceneID="EWq-Ba-maM">
+            <objects>
+                <viewController id="VBC-tI-Hia" customClass="MemoComposeViewController" customModule="simpleTODO" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bou-zr-AKx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rnq-ZF-e6u">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Nr4-1H-Ezd" firstAttribute="bottom" secondItem="Rnq-ZF-e6u" secondAttribute="bottom" id="a17-pB-FOT"/>
+                            <constraint firstItem="Nr4-1H-Ezd" firstAttribute="trailing" secondItem="Rnq-ZF-e6u" secondAttribute="trailing" id="aQM-cQ-rom"/>
+                            <constraint firstItem="Rnq-ZF-e6u" firstAttribute="leading" secondItem="Nr4-1H-Ezd" secondAttribute="leading" id="mdD-ho-YeJ"/>
+                            <constraint firstItem="Rnq-ZF-e6u" firstAttribute="top" secondItem="Nr4-1H-Ezd" secondAttribute="top" id="omV-FO-JQa"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nr4-1H-Ezd"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="새 메모" id="mqG-Ml-I7r">
+                        <barButtonItem key="leftBarButtonItem" image="Icon-Cancel" id="h7a-OB-waU">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dissmiss:" destination="VBC-tI-Hia" id="jB9-Jn-wHu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Icon-Save" id="cfU-cA-kQP">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="save:" destination="VBC-tI-Hia" id="HWP-Vu-3a6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="Rnq-ZF-e6u" id="4Lw-2M-sDq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tvf-vv-QyV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="806"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="K5I-5d-EuS">
+            <objects>
+                <navigationController storyboardIdentifier="MemoComposeViewController" automaticallyAdjustsScrollViewInsets="NO" id="4eE-WE-u95" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="F5L-yz-Ic0">
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VBC-tI-Hia" kind="relationship" relationship="rootViewController" id="9bA-Nl-0CB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="caI-hv-0WM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138" y="806"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="Icon-Cancel" width="24" height="24"/>
         <image name="Icon-Plus" width="24" height="24"/>
+        <image name="Icon-Save" width="24" height="24"/>
     </resources>
 </document>
