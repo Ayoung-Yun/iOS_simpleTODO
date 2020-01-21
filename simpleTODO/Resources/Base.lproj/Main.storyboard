@@ -42,6 +42,9 @@
                                         <constraints>
                                             <constraint firstItem="gai-NO-FiO" firstAttribute="centerY" secondItem="cKI-C8-buK" secondAttribute="centerY" id="8bK-GK-Oi2"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="gai-NO-FiO" id="O7v-wW-E6X"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -122,7 +125,7 @@
                         <barButtonItem key="leftBarButtonItem" image="Icon-Cancel" id="h7a-OB-waU">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="dissmiss:" destination="VBC-tI-Hia" id="jB9-Jn-wHu"/>
+                                <action selector="dismiss:" destination="VBC-tI-Hia" id="jB9-Jn-wHu"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="Icon-Save" id="cfU-cA-kQP">
@@ -146,7 +149,7 @@
                 <navigationController storyboardIdentifier="MemoComposeViewController" automaticallyAdjustsScrollViewInsets="NO" id="4eE-WE-u95" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="F5L-yz-Ic0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

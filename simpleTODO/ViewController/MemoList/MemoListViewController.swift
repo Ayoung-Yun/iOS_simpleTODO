@@ -12,6 +12,8 @@ class MemoListViewController: UIViewController {
     
     @IBOutlet weak var memoTableView: UITableView!
     
+    var memos: [Memo] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -23,24 +25,33 @@ class MemoListViewController: UIViewController {
     }
     
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
-        if let naviVC = storyboard?.instantiateViewController(withIdentifier: "MemoComposeViewController") as? UINavigationController, let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
+        if let naviVC = storyboard?.instantiateViewController(withIdentifier: MemoComposeViewController.reuseIdentifier) as? UINavigationController, let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
+            composeVC.addHandler = { memo in
+                // 클로저 안에서는 self로 접근해야 함
+                self.memos.insert(memo, at: 0)
+                // TableView에 변화가 생기면 꼭!! reloadData()를 해줘야 함
+                self.memoTableView.reloadData()
+            }
             present(naviVC, animated: true, completion: nil)
         }
     }
-    
 }
 
-extension UIViewController: UITableViewDataSource {
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+extension MemoListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return memos.count
     }
     
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoCell.reuseIdentifier, for: indexPath) as? MemoCell else {
+            return UITableViewCell()
+        }
+
+        cell.configure(with: memos[indexPath.row].content)
+        return cell
     }
 }
 
-extension UIViewController: UITableViewDelegate {
+extension MemoListViewController: UITableViewDelegate {
     
 }
