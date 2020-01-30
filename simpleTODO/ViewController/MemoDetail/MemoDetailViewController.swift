@@ -20,7 +20,7 @@ class MemoDetailViewController: UIViewController {
     var memo: Memo?
     var indexPath: IndexPath?
     var deleteHandler: ((IndexPath) -> Void)?
-    var editHandler: ((Memo) -> Void)?
+    var editHandler: ((Memo, IndexPath) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +46,22 @@ class MemoDetailViewController: UIViewController {
     }
     
     @IBAction func deleteMemo(_ sender: UIBarButtonItem) {
-        deleteHandler?(indexPath ?? IndexPath.init())
+        guard let delIndex = indexPath else { return }
+        deleteHandler?(delIndex)
         popDetailVC()
     }
     
     @IBAction func editMemo(_ sender: UIBarButtonItem) {
-        editHandler?(memo ?? Memo(content: "", date: Date()))
-        popDetailVC()
+        if let naviVC = storyboard?.instantiateViewController(withIdentifier: MemoComposeViewController.reuseIdentifier) as? UINavigationController,
+            let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
+            guard let editMemo = memo else { return }
+            composeVC.configure(with: editMemo)
+            composeVC.addHandler = { editMemo in
+                self.memo = editMemo
+                self.detailTableView.reloadData()
+            }
+            present(naviVC, animated: true, completion: nil)
+        }
     }
 }
 

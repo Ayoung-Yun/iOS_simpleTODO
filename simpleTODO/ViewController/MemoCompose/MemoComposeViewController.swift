@@ -19,6 +19,10 @@ class MemoComposeViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    func configure(with editMemo: Memo) {
+        self.contentView.text = editMemo.content
+    }
+    
     private func dismissModal() {
         dismiss(animated: true, completion: nil)
     }

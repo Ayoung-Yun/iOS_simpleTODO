@@ -194,9 +194,6 @@
                                                 <constraint firstItem="fQH-fj-sJb" firstAttribute="top" secondItem="2Gm-nE-8qv" secondAttribute="top" constant="5" id="iae-YN-sRi"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="fQH-fj-sJb" firstAttribute="centerY" secondItem="RhR-Og-6h9" secondAttribute="centerY" id="ktG-qs-3SW"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="contentLabel" destination="fQH-fj-sJb" id="xzA-CY-fEh"/>
                                         </connections>
@@ -216,13 +213,12 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="BZE-Qf-05D" firstAttribute="leading" secondItem="7uX-v6-Dxw" secondAttribute="leading" constant="30" id="Bc6-3B-83l"/>
-                                                <constraint firstAttribute="trailing" secondItem="BZE-Qf-05D" secondAttribute="trailing" constant="30" id="zy6-zG-3qU"/>
+                                                <constraint firstAttribute="trailing" secondItem="BZE-Qf-05D" secondAttribute="trailing" constant="30" id="EJT-Ks-ega"/>
+                                                <constraint firstItem="BZE-Qf-05D" firstAttribute="centerY" secondItem="7uX-v6-Dxw" secondAttribute="centerY" id="GMw-e9-Hpw"/>
+                                                <constraint firstItem="BZE-Qf-05D" firstAttribute="centerX" secondItem="7uX-v6-Dxw" secondAttribute="centerX" id="Xba-lZ-BD4"/>
+                                                <constraint firstItem="BZE-Qf-05D" firstAttribute="leading" secondItem="7uX-v6-Dxw" secondAttribute="leading" constant="30" id="cYF-0v-1hk"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="BZE-Qf-05D" firstAttribute="centerY" secondItem="bk7-kv-gty" secondAttribute="centerY" id="ZkE-gG-jKT"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="BZE-Qf-05D" id="P0z-5Z-a5w"/>
                                         </connections>

@@ -16,16 +16,37 @@ class MemoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpUI()
         loadAll()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        print("viewWillAppear")
+//    }
+//
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        print("viewDidAppear")
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        print("viewWillDisappear")
+//    }
+//
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        print("viewDidDisappear")
+//    }
+    
     private func setUpUI() {
+        // extension tableView
         memoTableView.dataSource = self
         memoTableView.delegate = self
     }
     
+    // update memo list at userDefaults
     private func saveAll() {
         let data = memos.map { memo in [
             "content": memo.content,
@@ -37,6 +58,7 @@ class MemoListViewController: UIViewController {
         userDefaults.synchronize()
     }
     
+    // load memo list
     private func loadAll() {
         let userDefaults = UserDefaults.standard
         // Array<Dictionary<String, Any> 로 다운캐스팅
@@ -49,15 +71,19 @@ class MemoListViewController: UIViewController {
         }
     }
     
+    private func applyAll() {
+        self.saveAll()
+        // TableView에 변화가 생기면 꼭!! reloadData()를 해줘야 함
+        self.memoTableView.reloadData()
+    }
+    
     @IBAction func addMemo(_ sender: UIBarButtonItem) {
         if let naviVC = storyboard?.instantiateViewController(withIdentifier: MemoComposeViewController.reuseIdentifier) as? UINavigationController,
             let composeVC = naviVC.viewControllers.first as? MemoComposeViewController {
             composeVC.addHandler = { memo in
                 // 클로저 안에서는 self로 접근해야 함
                 self.memos.insert(memo, at: 0)
-                self.saveAll()
-                // TableView에 변화가 생기면 꼭!! reloadData()를 해줘야 함
-                self.memoTableView.reloadData()
+                self.applyAll()
             }
             present(naviVC, animated: true, completion: nil)
         }
@@ -87,11 +113,13 @@ extension MemoListViewController: UITableViewDelegate {
         detailVC.configure(with: self.memos[indexPath.row], indexPath: indexPath)
         
         detailVC.deleteHandler = { indexPath in
-            print(indexPath)
+            self.memos.remove(at: indexPath.row)
+            self.applyAll()
         }
         
-        detailVC.editHandler = { memo in
-            print(memo)
+        detailVC.editHandler = { editMemo, editIndex in
+            print(editMemo)
+            print(editIndex)
         }
         
         navigationController?.pushViewController(detailVC, animated: true)
